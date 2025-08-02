@@ -59,22 +59,10 @@
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=P3h1SM0AAAAJ&hl=en" target="_blank">Talukder Z Jubery,</a>
-            </span>
-            <span class="author-block">
-              <a href="https://www.linkedin.com/in/elijah-rodriguez-97a427221" target="_blank">Elijah Rodriguez,</a>
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=GNuXi6oAAAAJ&hl=en" target="_blank">Aditya Balu,</a>
-            </span>
-          
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=-rmRjqIAAAAJ&hl=en" target="_blank">Soumik Sarkar,</a>
-            </span>
-
+            </span>          
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=iVTMSxoAAAAJ&hl=en&oi=ao" target="_blank">Adarsh Krishnamurthy,</a>
             </span>
-        
             <span class="author-block">
               <a href="https://www.me.iastate.edu/bglab/" target="_blank">Baskar Ganapathysubramanian,</a>
             </span>
@@ -87,14 +75,14 @@
           </div>
           <div class="publication-links">
             <!-- Arxiv PDF link -->
-            <span class="link-block">
+            <!-- <span class="link-block">
               <a href="https://arxiv.org/abs/2503.21958" target="_blank" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="fas fa-file-pdf"></i>
                 </span>
                 <span>Paper</span>
               </a>
-            </span>
+            </span> -->
             <!-- Supplementary PDF link -->
             <!-- <span class="link-block">
               <a href="static/pdfs/supplementary_material.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
@@ -123,14 +111,14 @@
               </a>
             </span>
            <!-- ArXiv abstract Link -->
-            <span class="link-block">
+            <!-- <span class="link-block">
               <a href="https://arxiv.org/abs/2503.21958" target="_blank" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="ai ai-arxiv"></i>
                 </span>
                 <span>arXiv</span>
               </a>
-            </span>
+            </span> -->
           </div>
         </div>
       </div>
@@ -148,17 +136,19 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div class="columns is-vcentered">
-        <div class="column is-half">
           <figure class="image">
-            <img src="static/images/blender.png" alt="HS-3D-NeRF">
+            <img src="static/images/teasure.gif" alt="HS-3D-NeRF">
           </figure>
-        </div>
-        <div class="column is-half">
-          <figure class="image">
-            <img src="static/images/pcd.png" alt="Second Image">
-          </figure>
-        </div>
       </div>
+
+     <div class="columns is-vcentered">
+          <figure class="image">
+            <img src="static/images/blender_apple.png"
+                alt="HS-3D-NeRF"
+                style="width: 60%; display: block; margin: 0 auto;">
+          </figure>
+      </div>
+            
       <h2 class="subtitle has-text-centered">
         <!-- Optional subtitle here -->
       </h2>
@@ -176,24 +166,32 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This paper presents a NeRF-based framework for point cloud (PCD) reconstruction, 
-            specifically designed for indoor high-throughput plant phenotyping facilities. 
-            Traditional NeRF-based reconstruction methods require cameras to move around stationary objects,
-             but this approach is impractical for high-throughput environments where objects are rapidly 
-             imaged while moving on conveyors or rotating pedestals. To address this limitation, we 
-             develop a variant of NeRF-based PCD reconstruction that uses a single stationary camera 
-             to capture images as the object rotates on a pedestal. Our workflow comprises COLMAP-based pose estimation, 
-             a straightforward pose transformation to simulate camera movement, and subsequent standard NeRF training. 
-             A defined Region of Interest (ROI) excludes irrelevant scene data, enabling the generation of high-resolution 
-             point clouds (10M points). Experimental results demonstrate excellent reconstruction fidelity, 
-             with precision-recall analyses yielding an F-score close to 100.00 across all evaluated plant objects. 
-             Although pose estimation remains computationally intensive with a stationary camera setup, overall training and 
-             reconstruction times are competitive, validating the method's feasibility for practical high-throughput indoor 
-             phenotyping applications. Our findings indicate that high-quality NeRF-based 3D reconstructions are achievable 
-             using a stationary camera, eliminating the need for complex camera motion or costly imaging equipment. This approach 
-             is especially beneficial when employing expensive and delicate instruments, such as hyperspectral cameras, for 3D 
-             plant phenotyping. Future work will focus on optimizing pose estimation techniques and further streamlining the 
-             methodology to facilitate seamless integration into automated, high-throughput 3D phenotyping pipelines.                       
+            Advances in hyperspectral imaging (HSI) and 3D reconstruction methods
+            have enabled accurate and high-throughput characterization of agricultural 
+            produce quality and plant phenotypes, both of which are essential
+            for advancing agricultural sustainability and enhancing breeding programs.
+            HSI effectively captures detailed biochemical features of produce, while 3D
+            geometric data significantly improves morphological analysis. 
+            However, integrating these two modalities at scale poses significant challenges. 
+            Conventional 3D reconstruction techniques often involve complex hardware
+            setups that are difficult to integrate into automated phenotyping systems.
+            Recent advances in neural radiance fields (NeRF) offer computationally
+            efficient 3D reconstruction but typically require moving-camera setups,
+            which limit throughput and reproducibility in standard indoor agricultural
+            phenotyping environments. To address these challenges, we introduce a
+            stationary-camera-based multi-channel NeRF framework designed explicitly
+            for high-throughput hyperspectral reconstruction for postharvest inspection
+            of agricultural produce. Our method captures multi-view hyperspectral data
+            using a stationary hyperspectral camera by rotating the object in front of
+            a carefully calibrated dark screen. We then estimate the relative pose of
+            the rotated object with the help of calibration markers. These poses are
+            then transformed to the camera frame of reference using simulated pose
+            transformations, which facilitate NeRF training using standard approaches.
+            In addition, we convert traditional 3-channel NeRF to use the multiple channels 
+            of the hyperspectral data to calculate the loss. Our approach yield
+            high-resolution 3D hyperspectral point clouds with high precision-recall
+            scores. Our results demonstrate that stationary-camera NeRF enables robust
+            3D hyperspectral reconstruction into automated agricultural workflows.                      
           </p>
         </div>
       </div>
@@ -210,18 +208,13 @@
       <h2 class="title is-3">Methodology</h2>
 <!-- Third Image -->
 <div class="publication-image has-text-centered" id="image-container-3">
-  <img src="static/images/experiemental_setup.png" alt="experimenta_setup" style="cursor: pointer; width: 90%; height: auto;">
+  <img src="static/images/experimental_setup.png" alt="experimenta_setup" style="cursor: pointer; width: 90%; height: auto;">
 </div>
 <p class="description">
-  Experimental setup. (A) Overall setup, where a stationary camera (iPhone 13 Mini) records a rotating object (green bell pepper) 
-    placed on a turntable against a black matte fabric to minimize background noise and improve segmentation. 
-    (B) Close-up of the turntable and object, highlighting the elevated platform and ArUco markers 
-    used for pose estimation and structured scene reconstruction. (C) ArUco markers for pose estimation, 
-    where different types of markers are used for feature matching in COLMAP to compute camera poses. 
-    (D) Scale calibration, where a ping pong ball (radius = 0.04 m) is measured with a caliper 
-    to ensure accurate scaling in the reconstructed point cloud data (PCD). This setup enables 
-    precise alignment between the stationary camera’s PCD measurements and the rotating camera’s ground-truth data 
-    for quantitative evaluation.
+  Experimental setup: (A) Overall setup, where a stationary hyperspectral camera (SPECIM IQ) records 
+  a rotating object (green bell pepper) placed on a turntable against a black matte fabric 
+  to minimize background noise and improve segmentation. (B) Close-up of the turntable and object, 
+  highlighting the elevated platform and ArUco markers used for pose estimation and structured scene reconstruction.
 </p>
 <div class="publication-image has-text-centered" id="image-container-3">
   <img src="static/images/workflow.png" alt="Workflow" style="cursor: pointer; width: 70%; height: auto;">
@@ -246,17 +239,12 @@
         <div class="column is-four-fifths">
           
           <!-- Dataset -->       
-          <div style="display: flex; justify-content: center; align-items: center; gap: 0; padding: 0 150px;">
-            <img src="static/images/plant-1_sc_render_resized.gif"
-                 alt="Sample Gif 1"
-                 style="cursor: pointer; width: 70%; height: auto;">
-            <img src="static/images/apricot_sc_render_resized.gif"
-                 alt="Sample Gif 2"
-                 style="cursor: pointer; width: 80%; height: auto;">
-            <img src="static/images/corn_sc_render_resized.gif"
-                 alt="Sample Gif 3"
-                 style="cursor: pointer; width: 70%; height: auto;">
-          </div>              
+          <div class="columns is-vcentered">
+              <figure class="image" style="margin-top: 30px;">
+                <img src="static/images/spectral_signature.png" alt="spectral_signature">
+              </figure>
+          </div>           
+           
        
 </section>
 
@@ -310,36 +298,6 @@
       </div>
 
       <div class="column has-text-centered video-column">
-        <a href="https://www.linkedin.com/in/elijah-rodriguez-97a427221" target="_blank" style="border-bottom: none;">
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="static/images/team/elijah.png" alt="Elijah Rodriguez" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
-            <span style="font-weight: bold; margin-top: 0.5rem;">Elijah Rodriguez</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="column has-text-centered video-column">
-        <a href="https://scholar.google.com/citations?user=GNuXi6oAAAAJ&hl=en&oi=ao" target="_blank" style="border-bottom: none;">
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="static/images/team/balu.jpeg" alt="Aditya Balu" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
-            <span style="font-weight: bold; margin-top: 0.5rem;">Aditya Balu</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Second row: 3 team members -->
-    <div class="columns is-centered" style="max-width: 95%;">
-      <div class="column has-text-centered video-column">
-        <a href="https://scholar.google.com/citations?user=-rmRjqIAAAAJ&hl=en" target="_blank" style="border-bottom: none;">
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="static/images/team/soumik.png" alt="Soumik Sarkar" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
-            <span style="font-weight: bold; margin-top: 0.5rem;">Soumik Sarkar</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="column has-text-centered video-column">
         <a href="https://scholar.google.com/citations?user=iVTMSxoAAAAJ&hl=en&oi=ao" target="_blank" style="border-bottom: none;">
           <div style="display: flex; flex-direction: column; align-items: center;">
             <img src="static/images/team/adarsh.jpeg" alt="Adarsh Krishnamurthy" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
@@ -370,12 +328,9 @@
     <h2 class="title has-text-centered">BibTeX</h2>
     <div class="box">
       <pre><code>@inproceedings{kibon2025nerf,
-  title={NeRF-based Point Cloud Reconstruction using a Stationary Camera for Agricultural Applications}, 
+  title={HS-3D-NeRF: 3D Surface and Hyperspectral Reconstruction From Stationary Hyperspectral Images Using Multi-Channel NeRFs}, 
   author={Kibon Ku,
     Talukder Z Jubery,
-    Elijah Rodriguez,
-    Aditya Balu,
-    Soumik Sarkar,
     Adarsh Krishnamurthy,
     Baskar Ganapathysubramanian},
   booktitle={Arxiv},
